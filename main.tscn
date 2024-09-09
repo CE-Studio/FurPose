@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://DynamicMenu.gd" id="1_smgvm"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kd3uu"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ova2r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iosna"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phua3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dnaen"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iosna"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ova2r"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kd3uu"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -30,11 +30,11 @@ layout_mode = 2
 [node name="Label" type="Button" parent="DynamicMenu/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxEmpty_kd3uu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ova2r")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iosna")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_phua3")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_dnaen")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_iosna")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ova2r")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kd3uu")
 keep_pressed_outside = true
 text = " Title"
 alignment = 0
