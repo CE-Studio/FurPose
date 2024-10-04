@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4txby5ykh3xg"]
+
+[ext_resource type="Script" path="res://DynamicMenu.gd" id="1_55xr7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ova2r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iosna"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phua3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dnaen"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kd3uu"]
+
+[node name="DynamicMenu" type="Node2D"]
+script = ExtResource("1_55xr7")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 97.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"topbar"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ova2r")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iosna")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_phua3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_dnaen")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kd3uu")
+keep_pressed_outside = true
+text = " Title"
+alignment = 0
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"MiniButton"
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"CloseButton"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Label" to="." method="_on_label_button_down"]
+[connection signal="button_up" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Label" to="." method="_on_label_button_up"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Button" to="." method="_on_min_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Button2" to="." method="_on_x_pressed"]
+[connection signal="child_entered_tree" from="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" to="." method="_on_v_box_container_child_entered_tree"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxdxsw2hsc70k"]
+
+[ext_resource type="Script" path="res://editors/pf/eString.gd" id="1_jcxho"]
+
+[node name="String" type="VBoxContainer"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_jcxho")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"Subtitle"
+text = "Name"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
