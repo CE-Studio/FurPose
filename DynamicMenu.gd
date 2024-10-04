@@ -57,10 +57,6 @@ func _ready():
 			if vbox.get_child_count() > 0:
 				vbox.add_child(HSeparator.new())
 			vbox.add_child(h)
-	
-	
-func _exit_tree() -> void:
-	pass
 
 
 func _process(delta):
@@ -94,6 +90,7 @@ func _input(event):
 
 
 func _on_label_button_down():
+	get_parent().move_child(self, get_parent().get_child_count() - 1)
 	held = true
 	holdoffset = position - vp.get_mouse_position()
 

@@ -1,4 +1,64 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bpdfbu54f4cfe"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://bpdfbu54f4cfe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iv4ja"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.356863)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36fql"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.364706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emwqn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.223529, 0.223529, 0.223529, 0.529412)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.215686)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8i4t"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101961, 0.101961, 0.101961, 0.52549)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.00784314, 0.00784314, 0.00784314, 0.52549)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4jqu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.341176)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.419608)
+corner_detail = 5
 
 [sub_resource type="Image" id="Image_ujyaj"]
 data = {
@@ -12,16 +72,41 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_k5obi"]
 image = SubResource("Image_ujyaj")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_si5wh"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.68159, 0.0270364, 2.88785e-07, 0.305882)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.566092, 6.61798e-07, 2.40654e-07, 0.462745)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7xh8"]
 content_margin_left = 4.0
 content_margin_top = 0.0
 content_margin_right = 4.0
 content_margin_bottom = 0.0
-bg_color = Color(0.273133, 0.00426282, 7.21961e-08, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+bg_color = Color(0.27451, 0.00392157, 0, 0.305882)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.270588, 0, 0, 0.462745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fkmy"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.776471, 0.0352941, 0, 0.407843)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.886275, 0, 0, 0.443137)
 
 [sub_resource type="Image" id="Image_37jcf"]
 data = {
@@ -83,9 +168,16 @@ fill_to = Vector2(0, 1)
 texture = SubResource("GradientTexture2D_i0mux")
 
 [resource]
+Button/styles/disabled = SubResource("StyleBoxFlat_iv4ja")
+Button/styles/focus = SubResource("StyleBoxFlat_36fql")
+Button/styles/hover = SubResource("StyleBoxFlat_emwqn")
+Button/styles/normal = SubResource("StyleBoxFlat_b8i4t")
+Button/styles/pressed = SubResource("StyleBoxFlat_c4jqu")
 CloseButton/base_type = &"Button"
 CloseButton/icons/icon = SubResource("ImageTexture_k5obi")
+CloseButton/styles/hover = SubResource("StyleBoxFlat_si5wh")
 CloseButton/styles/normal = SubResource("StyleBoxFlat_h7xh8")
+CloseButton/styles/pressed = SubResource("StyleBoxFlat_2fkmy")
 EditorIcons/icons/MissingNode = SubResource("ImageTexture_k5obi")
 EditorIcons/icons/Tween = SubResource("ImageTexture_boxpp")
 HSeparator/styles/separator = SubResource("StyleBoxTexture_qnkyc")
