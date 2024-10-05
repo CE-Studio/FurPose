@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxv23ixvrbf46"]
+
+[ext_resource type="Script" path="res://editors/pf/eBool.gd" id="1_xdbes"]
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 24.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+theme_type_variation = &"buttonBacking"
+script = ExtResource("1_xdbes")
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+text = "Name"
+
+[connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]

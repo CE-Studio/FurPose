@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://editors/pf/eString.gd" id="1_jcxho"]
 
 [node name="String" type="VBoxContainer"]
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 size_flags_vertical = 0
 script = ExtResource("1_jcxho")
 
@@ -15,3 +15,6 @@ text = "Name"
 [node name="LineEdit" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+
+[connection signal="focus_exited" from="LineEdit" to="." method="_on_line_edit_focus_exited"]
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]

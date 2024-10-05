@@ -13,5 +13,5 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_line_edit_value_changed(value: float) -> void:
-	if targ[prop] != int(value):
-		targ[prop] = int(value)
+	if targ[prop] != value:
+		targ[prop] = value

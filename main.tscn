@@ -1,6 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvkcbv28d388f"]
+[gd_scene load_steps=10 format=3 uid="uid://bvkcbv28d388f"]
 
-[ext_resource type="Script" path="res://test.gd" id="1_tda22"]
+[ext_resource type="Material" uid="uid://1spmlttcvlds" path="res://mats/norm.tres" id="1_41qr7"]
+[ext_resource type="Script" path="res://pickable.gd" id="1_tda22"]
+[ext_resource type="Material" uid="uid://cgabbmud4cgn3" path="res://mats/hlight.tres" id="3_sxet7"]
+[ext_resource type="Script" path="res://cam.gd" id="4_4tli0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1v86"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,16 +31,23 @@ environment = SubResource("Environment_ouj7e")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42201, 3.18208, 0.0908347)
+script = ExtResource("4_4tli0")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_3iskb")
+surface_material_override/0 = ExtResource("1_41qr7")
+script = ExtResource("1_tda22")
+props = Array[StringName]([&"position", &"rotation"])
+highlightMat = ExtResource("3_sxet7")
+defaultMat = ExtResource("1_41qr7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-script = ExtResource("1_tda22")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8gprw")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.0331169, 0.797718, -0.60212, 0, 0.602451, 0.798156, 0.999451, -0.0264325, 0.0199513, -2.42201, 3.18208, 0.0908347)
-
-[connection signal="input_event" from="MeshInstance3D/StaticBody3D" to="MeshInstance3D/StaticBody3D" method="_on_input_event"]
+[connection signal="input_event" from="MeshInstance3D/StaticBody3D" to="MeshInstance3D" method="_on_input_event"]
+[connection signal="mouse_entered" from="MeshInstance3D/StaticBody3D" to="MeshInstance3D" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/StaticBody3D" to="MeshInstance3D" method="_on_static_body_3d_mouse_exited"]

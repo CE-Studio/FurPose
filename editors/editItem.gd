@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Control
 class_name EditItem
 
 var targ:Object

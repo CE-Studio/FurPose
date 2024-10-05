@@ -20,14 +20,14 @@ var targdict:Array[StringName]
 const supportedtypes = {
 	TYPE_STRING: preload("res://editors/pf/eString.tscn"),
 	TYPE_STRING_NAME: preload("res://editors/pf/eString.tscn"),
-	TYPE_FLOAT: null,
+	TYPE_FLOAT: preload("res://editors/pf/eFlt.tscn"),
 	TYPE_INT: preload("res://editors/pf/eInt.tscn"),
-	TYPE_BOOL: null,
-	TYPE_VECTOR2: null,
+	TYPE_BOOL: preload("res://editors/pf/eBool.tscn"),
+	TYPE_VECTOR2: preload("res://editors/pf/eV2.tscn"),
 	TYPE_VECTOR2I: null,
-	TYPE_VECTOR3: null,
+	TYPE_VECTOR3: preload("res://editors/pf/eV3.tscn"),
 	TYPE_VECTOR3I: null,
-	TYPE_VECTOR4: null,
+	TYPE_VECTOR4: preload("res://editors/pf/eV4.tscn"),
 	TYPE_VECTOR4I: null,
 	TYPE_COLOR: null,
 }
@@ -50,13 +50,14 @@ func _ready():
 		if (targvar.name is String) or (targvar.name is StringName):
 			lbl.text = targvar.name
 	for i in targdict:
-		if is_instance_valid(supportedtypes[typeof(targvar[i])]):
-			var h:EditItem = supportedtypes[typeof(targvar[i])].instantiate()
-			h.targ = targvar
-			h.prop = i
-			if vbox.get_child_count() > 0:
-				vbox.add_child(HSeparator.new())
-			vbox.add_child(h)
+		if typeof(targvar[i]) in supportedtypes.keys():
+			if is_instance_valid(supportedtypes[typeof(targvar[i])]):
+				var h:EditItem = supportedtypes[typeof(targvar[i])].instantiate()
+				h.targ = targvar
+				h.prop = i
+				if vbox.get_child_count() > 0:
+					vbox.add_child(HSeparator.new())
+				vbox.add_child(h)
 
 
 func _process(delta):
@@ -104,8 +105,11 @@ func _on_v_box_container_child_entered_tree(_node):
 
 
 func rsize():
-	print("a")
-	scroll.custom_minimum_size.y = clampf(vbox.size.y + 40, 0, 400) 
+	scroll.custom_minimum_size.y = clampf(vbox.size.y + 2, 0, 400) 
+	if scroll.custom_minimum_size.y < 400:
+		scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	else:
+		scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 
 
 func _on_tree_exiting():

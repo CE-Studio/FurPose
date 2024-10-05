@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh8nyn8ehpb24"]
+[gd_scene load_steps=2 format=3 uid="uid://ckxg4fscemvj8"]
 
-[ext_resource type="Script" path="res://editors/pf/eInt.gd" id="1_jsss5"]
+[ext_resource type="Script" path="res://editors/pf/eFlt.gd" id="1_07486"]
 
 [node name="String" type="VBoxContainer"]
 size_flags_horizontal = 3
 size_flags_vertical = 0
-script = ExtResource("1_jsss5")
+script = ExtResource("1_07486")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -18,8 +18,8 @@ text = "Name"
 [node name="Label2" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"Subtitle"
-theme_override_colors/font_color = Color(0, 0.909804, 0.733333, 1)
-text = "i"
+theme_override_colors/font_color = Color(0.963534, 0, 0.360486, 1)
+text = "f"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -28,7 +28,7 @@ theme_type_variation = &"buttonBacking"
 [node name="LineEdit" type="SpinBox" parent="PanelContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-rounded = true
+step = -0.1
 allow_greater = true
 allow_lesser = true
 
