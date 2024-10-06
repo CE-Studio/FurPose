@@ -21,6 +21,18 @@ theme_type_variation = &"Subtitle"
 theme_override_colors/font_color = Color(0.963534, 0, 0.360486, 1)
 text = "f"
 
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"buttonBacking"
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+tooltip_text = "Make Uniform"
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 theme_type_variation = &"buttonBacking"
@@ -33,7 +45,8 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-step = -0.1
+min_value = -100.0
+step = -0.01
 allow_greater = true
 allow_lesser = true
 
@@ -41,7 +54,8 @@ allow_lesser = true
 custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-step = -0.1
+min_value = -100.0
+step = -0.01
 allow_greater = true
 allow_lesser = true
 
@@ -49,10 +63,12 @@ allow_lesser = true
 custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-step = -0.1
+min_value = -100.0
+step = -0.01
 allow_greater = true
 allow_lesser = true
 
+[connection signal="toggled" from="HBoxContainer/PanelContainer/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="value_changed" from="PanelContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_value_changed"]
 [connection signal="value_changed" from="PanelContainer/HBoxContainer/LineEdit2" to="." method="_on_line_edit_value_changed"]
 [connection signal="value_changed" from="PanelContainer/HBoxContainer/LineEdit3" to="." method="_on_line_edit_value_changed"]

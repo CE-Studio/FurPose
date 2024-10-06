@@ -1,4 +1,5 @@
 extends Node
+class_name Pickable
 
 
 @export var props:Array[StringName]
@@ -13,6 +14,26 @@ func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, n
 		h.setup(self, props)
 		#h.setup(get_parent(), ["rotation_degrees", "position", "scale"])
 		get_tree().root.add_child(h)
+
+
+func delete() -> void:
+	queue_free()
+
+
+func align_with_y(xform:Transform3D, new_y:Vector3) -> Transform3D:
+	xform.basis.y = new_y
+	xform.basis.x = -xform.basis.z.cross(new_y)
+	xform.basis = xform.basis.orthonormalized()
+	return xform
+
+
+func snapToSurface() -> void:
+	$RayCast3D.force_raycast_update()
+	if $RayCast3D.is_colliding():
+		self.global_transform = align_with_y(self.global_transform, $RayCast3D.get_collision_normal())
+		print($RayCast3D.get_collision_point())
+		self.global_position = $RayCast3D.get_collision_point()
+		print(self.global_position)
 
 
 func _on_static_body_3d_mouse_entered() -> void:

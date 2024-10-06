@@ -46,10 +46,10 @@ func _unhandled_input(event):
 		match event.button_index:
 			MOUSE_BUTTON_RIGHT:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if event.pressed else Input.MOUSE_MODE_VISIBLE)
-			MOUSE_BUTTON_WHEEL_UP:
-				position -= transform.basis.z.normalized() / 10.0
-			MOUSE_BUTTON_WHEEL_DOWN: 
-				position += transform.basis.z.normalized() / 10.0
+			MOUSE_BUTTON_WHEEL_UP when event.pressed:
+				position -= transform.basis.z.normalized() / 5.0
+			MOUSE_BUTTON_WHEEL_DOWN when event.pressed: 
+				position += transform.basis.z.normalized() / 5.0
 
 	# Receives key input
 	if event is InputEventKey:

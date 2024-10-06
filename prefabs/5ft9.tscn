@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfb802fmh22j5"]
+
+[ext_resource type="ArrayMesh" uid="uid://bdj3u7ld8f13t" path="res://obj/5ft9.obj" id="1_0hk8i"]
+[ext_resource type="Material" uid="uid://1spmlttcvlds" path="res://mats/norm.tres" id="1_6bjhf"]
+[ext_resource type="Script" path="res://pickable.gd" id="2_r3oye"]
+[ext_resource type="Material" uid="uid://cgabbmud4cgn3" path="res://mats/hlight.tres" id="3_q4kd4"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ao7gu"]
+data = PackedVector3Array(-0.2629, 1.7531, 0.2629, -0.2629, 0.0005, 0.2629, -0.2629, 1.7531, -0.2629, -0.2629, 1.7531, -0.2629, -0.2629, 0.0005, 0.2629, -0.2629, 0.0005, -0.2629, -0.2629, 1.7531, -0.2629, -0.2629, 0.0005, -0.2629, 0.2629, 1.7531, -0.2629, 0.2629, 1.7531, -0.2629, -0.2629, 0.0005, -0.2629, 0.2629, 0.0005, -0.2629, 0.2629, 1.7531, -0.2629, 0.2629, 0.0005, -0.2629, 0.2629, 1.7531, 0.2629, 0.2629, 1.7531, 0.2629, 0.2629, 0.0005, -0.2629, 0.2629, 0.0005, 0.2629, 0.2629, 1.7531, 0.2629, 0.2629, 0.0005, 0.2629, -0.2629, 1.7531, 0.2629, -0.2629, 1.7531, 0.2629, 0.2629, 0.0005, 0.2629, -0.2629, 0.0005, 0.2629, 0.2629, 0.0005, -0.2629, -0.2629, 0.0005, -0.2629, 0.2629, 0.0005, 0.2629, 0.2629, 0.0005, 0.2629, -0.2629, 0.0005, -0.2629, -0.2629, 0.0005, 0.2629, -0.2629, 1.7531, -0.2629, 0.2629, 1.7531, -0.2629, -0.2629, 1.7531, 0.2629, -0.2629, 1.7531, 0.2629, 0.2629, 1.7531, -0.2629, 0.2629, 1.7531, 0.2629)
+
+[node name="5ft9in Placeholder" type="MeshInstance3D"]
+mesh = ExtResource("1_0hk8i")
+surface_material_override/0 = ExtResource("1_6bjhf")
+script = ExtResource("2_r3oye")
+props = Array[StringName]([&"position", &"rotation", &"scale", &"snapToSurface", &"delete"])
+highlightMat = ExtResource("3_q4kd4")
+defaultMat = ExtResource("1_6bjhf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ao7gu")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+enabled = false
+target_position = Vector3(0, -2, 0)
+hit_back_faces = false
+
+[connection signal="input_event" from="StaticBody3D" to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]

@@ -30,6 +30,7 @@ const supportedtypes = {
 	TYPE_VECTOR4: preload("res://editors/pf/eV4.tscn"),
 	TYPE_VECTOR4I: null,
 	TYPE_COLOR: null,
+	TYPE_CALLABLE: preload("res://editors/pf/eCall.tscn"),
 }
 
 func setup(object:Object, dict:Array[StringName] = []) -> void:
@@ -81,6 +82,8 @@ func _process(delta):
 	velocity = velocity.lerp(Vector2.ZERO, delta * 3)
 	skew = lerpf(skew, deg_to_rad(tanh((velocity.x / 50) / 100) * 45), delta * 10)
 	scale.y = lerpf(scale.y, clampf(1 - ((velocity.y / 50) / 200), 0.5, 1.5), delta * 10)
+	if not is_instance_valid(targvar):
+		queue_free()
 
 
 func _input(event):
