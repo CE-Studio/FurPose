@@ -16,6 +16,7 @@
 script = ExtResource("1_55xr7")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(97, 20)
 offset_right = 97.0
 offset_bottom = 31.0
 size_flags_horizontal = 3

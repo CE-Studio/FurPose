@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dg7ku2uwvyuxn"]
+
+[node name="RichTextLabel" type="RichTextLabel"]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 300.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "
+[center][b]FurPose[/b] v1.0
+
+Created by clarence112
+
+© CE-Studio 2024, GNU aGLP-v3
+	"
+fit_content = true
+scroll_active = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvkcbv28d388f"]
+[gd_scene load_steps=36 format=3 uid="uid://bvkcbv28d388f"]
 
 [ext_resource type="PackedScene" uid="uid://c8qoqf6ta483e" path="res://prefabs/bean.tscn" id="2_j2c7y"]
 [ext_resource type="Material" uid="uid://cgabbmud4cgn3" path="res://mats/hlight.tres" id="3_sxet7"]
@@ -7,8 +7,9 @@
 [ext_resource type="ArrayMesh" uid="uid://b87ko41l5setg" path="res://obj/arrow.obj" id="5_it57t"]
 [ext_resource type="Script" path="res://spawnMenu.gd" id="6_vi0ss"]
 [ext_resource type="Material" uid="uid://dgn5cl0ch3jf5" path="res://mats/widj.tres" id="6_xqn1f"]
-[ext_resource type="Texture2D" uid="uid://dgoxsgc4g4fgp" path="res://tex/missing.png" id="6_xr2iv"]
 [ext_resource type="PackedScene" uid="uid://dfb802fmh22j5" path="res://prefabs/5ft9.tscn" id="8_rsoub"]
+[ext_resource type="Texture2D" uid="uid://daf71topdnlux" path="res://tex/bean.png" id="9_jjva2"]
+[ext_resource type="Texture2D" uid="uid://bl8g4s7a3hsdj" path="res://tex/5f9.png" id="10_ifmae"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1v86"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -237,7 +238,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(688.162, 222.957)
 nodes/fragment/0/position = Vector2(2260, 260)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_10m3a")
 nodes/fragment/2/position = Vector2(-540, 140)
@@ -278,6 +278,18 @@ render_priority = 0
 shader = SubResource("VisualShader_uhes2")
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ga6uy"]
+
+[sub_resource type="GDScript" id="GDScript_1yvck"]
+script/source = "extends PopupMenu
+
+
+func _on_id_pressed(id: int) -> void:
+	print(id)
+	var h:DynamicMenu = preload(\"res://dynamic_menu.tscn\").instantiate()
+	h.cont.append(preload(\"res://abt.tscn\").instantiate())
+	get_tree().root.add_child(h)
+	h.lbl.text = \"About\"
+"
 
 [node name="Node2D" type="Node3D"]
 
@@ -343,14 +355,24 @@ theme_type_variation = &"topbar"
 layout_mode = 2
 
 [node name="File" type="PopupMenu" parent="Control/VBoxContainer/PanelContainer/MenuBar"]
+item_count = 4
+item_0/text = "Save"
+item_1/text = "Save As..."
+item_1/id = 1
+item_2/text = "New"
+item_2/id = 2
+item_3/text = "Open..."
+item_3/id = 3
 
 [node name="Edit" type="PopupMenu" parent="Control/VBoxContainer/PanelContainer/MenuBar"]
 auto_translate_mode = 1
 
 [node name="Help" type="PopupMenu" parent="Control/VBoxContainer/PanelContainer/MenuBar"]
 auto_translate_mode = 1
+system_menu_id = 4
 item_count = 1
 item_0/text = "About"
+script = SubResource("GDScript_1yvck")
 
 [node name="PanelContainer2" type="PanelContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -367,7 +389,7 @@ vertical_scroll_mode = 2
 script = ExtResource("6_vi0ss")
 items = Array[PackedScene]([ExtResource("2_j2c7y"), ExtResource("8_rsoub")])
 names = Array[String](["Bean", "5ft9in PLaceholder"])
-icons = Array[Texture2D]([ExtResource("6_xr2iv"), ExtResource("6_xr2iv")])
+icons = Array[Texture2D]([ExtResource("9_jjva2"), ExtResource("10_ifmae")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/PanelContainer2/ScrollContainer"]
 layout_mode = 2
@@ -378,3 +400,4 @@ theme_override_constants/separation = 0
 [connection signal="input_event" from="Sun/StaticBody3D" to="Sun" method="_on_input_event"]
 [connection signal="mouse_entered" from="Sun/StaticBody3D" to="Sun" method="_on_static_body_3d_mouse_entered"]
 [connection signal="mouse_exited" from="Sun/StaticBody3D" to="Sun" method="_on_static_body_3d_mouse_exited"]
+[connection signal="id_pressed" from="Control/VBoxContainer/PanelContainer/MenuBar/Help" to="Control/VBoxContainer/PanelContainer/MenuBar/Help" method="_on_id_pressed"]

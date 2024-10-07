@@ -16,6 +16,8 @@ static var all:Array[DynamicMenu] = []
 
 var targvar:Object
 var targdict:Array[StringName]
+var autopop := false
+var cont:Array[CanvasItem]
 
 const supportedtypes = {
 	TYPE_STRING: preload("res://editors/pf/eString.tscn"),
@@ -34,6 +36,7 @@ const supportedtypes = {
 }
 
 func setup(object:Object, dict:Array[StringName] = []) -> void:
+	autopop = true
 	targvar = object
 	if dict == []:
 		var k = supportedtypes.keys()
@@ -47,18 +50,23 @@ func setup(object:Object, dict:Array[StringName] = []) -> void:
 
 func _ready():
 	DynamicMenu.all.append(self)
-	if "name" in targvar:
-		if (targvar.name is String) or (targvar.name is StringName):
-			lbl.text = targvar.name
-	for i in targdict:
-		if typeof(targvar[i]) in supportedtypes.keys():
-			if is_instance_valid(supportedtypes[typeof(targvar[i])]):
-				var h:EditItem = supportedtypes[typeof(targvar[i])].instantiate()
-				h.targ = targvar
-				h.prop = i
-				if vbox.get_child_count() > 0:
-					vbox.add_child(HSeparator.new())
-				vbox.add_child(h)
+	for i in cont:
+		if vbox.get_child_count() > 0:
+			vbox.add_child(HSeparator.new())
+		vbox.add_child(i)
+	if autopop:
+		if "name" in targvar:
+			if (targvar.name is String) or (targvar.name is StringName):
+				lbl.text = targvar.name
+		for i in targdict:
+			if typeof(targvar[i]) in supportedtypes.keys():
+				if is_instance_valid(supportedtypes[typeof(targvar[i])]):
+					var h:EditItem = supportedtypes[typeof(targvar[i])].instantiate()
+					h.targ = targvar
+					h.prop = i
+					if vbox.get_child_count() > 0:
+						vbox.add_child(HSeparator.new())
+					vbox.add_child(h)
 
 
 func _process(delta):
@@ -82,7 +90,7 @@ func _process(delta):
 	velocity = velocity.lerp(Vector2.ZERO, delta * 3)
 	skew = lerpf(skew, deg_to_rad(tanh((velocity.x / 50) / 100) * 45), delta * 10)
 	scale.y = lerpf(scale.y, clampf(1 - ((velocity.y / 50) / 200), 0.5, 1.5), delta * 10)
-	if not is_instance_valid(targvar):
+	if autopop and (not is_instance_valid(targvar)):
 		queue_free()
 
 
