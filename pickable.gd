@@ -20,6 +20,13 @@ func delete() -> void:
 	queue_free()
 
 
+func makeDuplicate() -> void:
+	var h = self.duplicate()
+	get_parent().add_child(h, true)
+	h.set_owner(get_parent())
+	h.position.z += 1
+
+
 func align_with_y(xform:Transform3D, new_y:Vector3) -> Transform3D:
 	xform.basis.y = new_y
 	xform.basis.x = -xform.basis.z.cross(new_y)

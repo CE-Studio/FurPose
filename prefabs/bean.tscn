@@ -13,7 +13,7 @@ data = PackedVector3Array(0, 1, 0, 0, 1, 0, 0, 0.9924, -0.0868, 0, 1, 0, -0.0085
 mesh = SubResource("CapsuleMesh_3iskb")
 surface_material_override/0 = ExtResource("1_txckm")
 script = ExtResource("2_wrkt0")
-props = Array[StringName]([&"position", &"rotation", &"scale", &"delete"])
+props = Array[StringName]([&"position", &"rotation", &"scale", &"makeDuplicate", &"delete"])
 highlightMat = ExtResource("3_bs8ij")
 defaultMat = ExtResource("1_txckm")
 

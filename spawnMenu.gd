@@ -17,4 +17,6 @@ func _ready() -> void:
 		
 		
 func spawn(n:PackedScene) -> void:
-	$"../../../../World".add_child(n.instantiate(), true)
+	var h = n.instantiate()
+	$"../../../../World".add_child(h, true)
+	h.set_owner($"../../../../World")
