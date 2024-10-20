@@ -120,6 +120,7 @@ defaultMat = ExtResource("5_8k2gy")
 rotation_order = 5
 surface_material_override/0 = ExtResource("5_8k2gy")
 script = ExtResource("2_840i3")
+props = Array[StringName]([&"zRotation", &"xRotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
@@ -127,6 +128,7 @@ defaultMat = ExtResource("5_8k2gy")
 rotation_order = 5
 surface_material_override/0 = ExtResource("5_8k2gy")
 script = ExtResource("2_840i3")
+props = Array[StringName]([&"zRotation", &"xRotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
@@ -134,6 +136,7 @@ defaultMat = ExtResource("5_8k2gy")
 rotation_order = 0
 surface_material_override/0 = ExtResource("5_8k2gy")
 script = ExtResource("2_840i3")
+props = Array[StringName]([&"yRotation", &"zRotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
@@ -141,6 +144,7 @@ defaultMat = ExtResource("5_8k2gy")
 rotation_order = 5
 surface_material_override/0 = ExtResource("5_8k2gy")
 script = ExtResource("2_840i3")
+props = Array[StringName]([&"yRotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
@@ -148,6 +152,7 @@ defaultMat = ExtResource("5_8k2gy")
 rotation_order = 5
 surface_material_override/0 = ExtResource("5_8k2gy")
 script = ExtResource("2_840i3")
+props = Array[StringName]([&"yRotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
@@ -166,6 +171,7 @@ transform = Transform3D(0.951594, -0.307357, 0, 0.307357, 0.951594, 0, 0, 0, 1, 
 rotation_order = 5
 surface_material_override/0 = ExtResource("5_8k2gy")
 script = ExtResource("2_840i3")
+props = Array[StringName]([&"xRotation", &"yRotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
@@ -173,6 +179,7 @@ defaultMat = ExtResource("5_8k2gy")
 rotation_order = 5
 surface_material_override/0 = ExtResource("5_8k2gy")
 script = ExtResource("2_840i3")
+props = Array[StringName]([&"yRotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
@@ -190,6 +197,7 @@ shape = SubResource("ConcavePolygonShape3D_repl6")
 rotation_order = 4
 surface_material_override/0 = ExtResource("5_8k2gy")
 script = ExtResource("2_840i3")
+props = Array[StringName]([&"rotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
@@ -197,6 +205,7 @@ defaultMat = ExtResource("5_8k2gy")
 rotation_order = 5
 surface_material_override/0 = ExtResource("5_8k2gy")
 script = ExtResource("2_840i3")
+props = Array[StringName]([&"yRotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
@@ -215,6 +224,7 @@ transform = Transform3D(0.919821, 0.392337, 0, -0.392337, 0.919821, 0, 0, 0, 1, 
 rotation_order = 5
 surface_material_override/0 = ExtResource("5_8k2gy")
 script = ExtResource("2_840i3")
+props = Array[StringName]([&"xRotation", &"yRotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
@@ -222,6 +232,7 @@ defaultMat = ExtResource("5_8k2gy")
 rotation_order = 5
 surface_material_override/0 = ExtResource("5_8k2gy")
 script = ExtResource("2_840i3")
+props = Array[StringName]([&"yRotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
