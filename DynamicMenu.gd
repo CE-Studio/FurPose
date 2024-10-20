@@ -19,6 +19,7 @@ var targdict:Array[StringName]
 var autopop := false
 var cont:Array[CanvasItem]
 
+
 const supportedtypes = {
 	TYPE_STRING: preload("res://editors/pf/eString.tscn"),
 	TYPE_STRING_NAME: preload("res://editors/pf/eString.tscn"),

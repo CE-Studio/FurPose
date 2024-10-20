@@ -25,7 +25,3 @@ shape = SubResource("ConcavePolygonShape3D_ao7gu")
 enabled = false
 target_position = Vector3(0, -2, 0)
 hit_back_faces = false
-
-[connection signal="input_event" from="StaticBody3D" to="." method="_on_input_event"]
-[connection signal="mouse_entered" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
-[connection signal="mouse_exited" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]

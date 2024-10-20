@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bvkcbv28d388f"]
+[gd_scene load_steps=38 format=3 uid="uid://bvkcbv28d388f"]
 
 [ext_resource type="PackedScene" uid="uid://c8qoqf6ta483e" path="res://prefabs/bean.tscn" id="2_j2c7y"]
 [ext_resource type="Material" uid="uid://cgabbmud4cgn3" path="res://mats/hlight.tres" id="3_sxet7"]
@@ -9,7 +9,9 @@
 [ext_resource type="Material" uid="uid://dgn5cl0ch3jf5" path="res://mats/widj.tres" id="6_xqn1f"]
 [ext_resource type="PackedScene" uid="uid://dfb802fmh22j5" path="res://prefabs/5ft9.tscn" id="8_rsoub"]
 [ext_resource type="Texture2D" uid="uid://daf71topdnlux" path="res://tex/bean.png" id="9_jjva2"]
+[ext_resource type="PackedScene" uid="uid://db3prh72emign" path="res://prefabs/StickDerg.tscn" id="9_k0ga6"]
 [ext_resource type="Texture2D" uid="uid://bl8g4s7a3hsdj" path="res://tex/5f9.png" id="10_ifmae"]
+[ext_resource type="Texture2D" uid="uid://dgoxsgc4g4fgp" path="res://tex/missing.png" id="12_hslre"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1v86"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -387,9 +389,9 @@ size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 script = ExtResource("6_vi0ss")
-items = Array[PackedScene]([ExtResource("2_j2c7y"), ExtResource("8_rsoub")])
-names = Array[String](["Bean", "5ft9in PLaceholder"])
-icons = Array[Texture2D]([ExtResource("9_jjva2"), ExtResource("10_ifmae")])
+items = Array[PackedScene]([ExtResource("2_j2c7y"), ExtResource("8_rsoub"), ExtResource("9_k0ga6")])
+names = Array[String](["Bean", "5ft9in PLaceholder", "Stick Dragon"])
+icons = Array[Texture2D]([ExtResource("9_jjva2"), ExtResource("10_ifmae"), ExtResource("12_hslre")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/PanelContainer2/ScrollContainer"]
 layout_mode = 2
@@ -397,7 +399,4 @@ theme_override_constants/separation = 0
 
 [node name="World" type="Node3D" parent="."]
 
-[connection signal="input_event" from="Sun/StaticBody3D" to="Sun" method="_on_input_event"]
-[connection signal="mouse_entered" from="Sun/StaticBody3D" to="Sun" method="_on_static_body_3d_mouse_entered"]
-[connection signal="mouse_exited" from="Sun/StaticBody3D" to="Sun" method="_on_static_body_3d_mouse_exited"]
 [connection signal="id_pressed" from="Control/VBoxContainer/PanelContainer/MenuBar/Help" to="Control/VBoxContainer/PanelContainer/MenuBar/Help" method="_on_id_pressed"]

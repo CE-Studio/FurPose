@@ -7,6 +7,34 @@ class_name Pickable
 @export var defaultMat:Material
 
 
+var xRotation:
+	get:
+		return self.rotation.x
+	set(value):
+		xRotation = value
+		self.rotation.x = value
+var yRotation:
+	get:
+		return self.rotation.y
+	set(value):
+		yRotation = value
+		self.rotation.y = value
+var zRotation:
+	get:
+		return self.rotation.z
+	set(value):
+		zRotation = value
+		self.rotation.z = value
+
+
+func _ready() -> void:
+	for i in get_children():
+		if i is StaticBody3D:
+			i.input_event.connect(_on_input_event)
+			i.mouse_entered.connect(_on_static_body_3d_mouse_entered)
+			i.mouse_exited.connect(_on_static_body_3d_mouse_exited)
+
+
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("lclick"):
 		get_viewport().set_input_as_handled()
