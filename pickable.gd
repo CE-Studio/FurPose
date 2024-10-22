@@ -39,14 +39,12 @@ func _ready() -> void:
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("lclick"):
 		get_viewport().set_input_as_handled()
-		var h:DynamicMenu = preload("res://dynamic_menu.tscn").instantiate()
-		h.setup(self, props)
-		#h.setup(get_parent(), ["rotation_degrees", "position", "scale"])
-		get_tree().root.add_child(h)
-		Gizmo.select(self)
-	elif event.is_action_pressed("rclick"):
-		get_viewport().set_input_as_handled()
-		print("i mean I guess")
+		if is_instance_valid(Gizmo.instance) and (Gizmo.instance.targ == self):
+			var h:DynamicMenu = preload("res://dynamic_menu.tscn").instantiate()
+			h.setup(self, props)
+			get_tree().root.add_child(h)
+		else:
+			Gizmo.select(self)
 
 
 func delete() -> void:

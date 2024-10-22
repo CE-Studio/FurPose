@@ -48,6 +48,9 @@ var hasz := true
 
 
 func _ready() -> void:
+	hx.input_event.connect(inputx)
+	hy.input_event.connect(inputy)
+	hz.input_event.connect(inputz)
 	if is_instance_valid(targ):
 		mode = targ.rotation_order
 		if not(&"rotation" in targ.props):
@@ -153,3 +156,30 @@ func _process(delta: float) -> void:
 			c3.rotation.y = rotval.y
 		Z:
 			c3.rotation.z = rotval.z
+
+
+func inputx(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
+	if event is InputEventMouseMotion:
+		if Input.is_action_pressed("lclick"):
+			var rel = event.relative.x + event.relative.y
+			rotval.x += rel * 0.005
+			if is_instance_valid(targ):
+				targ.rotation = rotval
+
+
+func inputy(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
+	if event is InputEventMouseMotion:
+		if Input.is_action_pressed("lclick"):
+			var rel = event.relative.x + event.relative.y
+			rotval.y += rel * 0.005
+			if is_instance_valid(targ):
+				targ.rotation = rotval
+
+
+func inputz(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
+	if event is InputEventMouseMotion:
+		if Input.is_action_pressed("lclick"):
+			var rel = event.relative.x + event.relative.y
+			rotval.z += rel * 0.005
+			if is_instance_valid(targ):
+				targ.rotation = rotval
