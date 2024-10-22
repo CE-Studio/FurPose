@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://crbgrctnhe6ns"
+path="res://.godot/imported/rotZ.obj-aef2237be5bba5bdf19797be583ad2f7.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rotZ.obj-aef2237be5bba5bdf19797be583ad2f7.mesh"]
+
+source_file="res://obj/gizmos/rotZ.obj"
+dest_files=["res://.godot/imported/rotZ.obj-aef2237be5bba5bdf19797be583ad2f7.mesh", "res://.godot/imported/rotZ.obj-aef2237be5bba5bdf19797be583ad2f7.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
