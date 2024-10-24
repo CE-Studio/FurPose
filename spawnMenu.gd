@@ -14,8 +14,8 @@ func _ready() -> void:
 		b.pressed.connect(spawn.bind(items[i]))
 		b.icon = icons[i]
 		$VBoxContainer.add_child(b)
-		
-		
+
+
 func spawn(n:PackedScene) -> void:
 	var h = n.instantiate()
 	$"../../../../World".add_child(h, true)
