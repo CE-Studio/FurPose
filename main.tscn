@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bvkcbv28d388f"]
+[gd_scene load_steps=39 format=3 uid="uid://bvkcbv28d388f"]
 
 [ext_resource type="PackedScene" uid="uid://c8qoqf6ta483e" path="res://prefabs/bean.tscn" id="2_j2c7y"]
 [ext_resource type="Material" uid="uid://cgabbmud4cgn3" path="res://mats/hlight.tres" id="3_sxet7"]
@@ -24,6 +24,8 @@ sky_material = SubResource("ProceduralSkyMaterial_s1v86")
 background_mode = 2
 sky = SubResource("Sky_wjwxx")
 tonemap_mode = 2
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_8adfe"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cvf0g"]
 data = PackedVector3Array(-0.1403, 0, 0.081, -0.0779, 0, 0.045, -0.1403, 0, -0.081, -0.1403, 0, -0.081, -0.0779, 0, 0.045, -0.0779, 0, -0.045, 0, -0.24, -0.09, -0.0779, -0.24, -0.045, 0.0779, -0.24, -0.045, 0.0779, -0.24, -0.045, -0.0779, -0.24, -0.045, 0.0779, -0.24, 0.045, 0.0779, -0.24, 0.045, -0.0779, -0.24, -0.045, 0, -0.24, 0.09, 0, -0.24, 0.09, -0.0779, -0.24, -0.045, -0.0779, -0.24, 0.045, -0.0779, -0.24, -0.045, -0.0779, 0, -0.045, -0.0779, -0.24, 0.045, -0.0779, -0.24, 0.045, -0.0779, 0, -0.045, -0.0779, 0, 0.045, 0.0779, -0.24, 0.045, 0.0779, 0, 0.045, 0.0779, -0.24, -0.045, 0.0779, -0.24, -0.045, 0.0779, 0, 0.045, 0.0779, 0, -0.045, -0.0779, -0.24, 0.045, -0.0779, 0, 0.045, 0, -0.24, 0.09, 0, -0.24, 0.09, -0.0779, 0, 0.045, 0, 0, 0.09, 0, -0.24, -0.09, 0, 0, -0.09, -0.0779, -0.24, -0.045, -0.0779, -0.24, -0.045, 0, 0, -0.09, -0.0779, 0, -0.045, 0.0779, -0.24, -0.045, 0.0779, 0, -0.045, 0, -0.24, -0.09, 0, -0.24, -0.09, 0.0779, 0, -0.045, 0, 0, -0.09, 0, -0.24, 0.09, 0, 0, 0.09, 0.0779, -0.24, 0.045, 0.0779, -0.24, 0.045, 0, 0, 0.09, 0.0779, 0, 0.045, 0.1403, 0, 0.081, 0, 0, 0.162, 0, 0.24, 0, 0.1403, 0, -0.081, 0.0779, 0, -0.045, 0.1403, 0, 0.081, 0.1403, 0, 0.081, 0.0779, 0, -0.045, 0.0779, 0, 0.045, 0, 0, 0.162, 0, 0, 0.09, -0.1403, 0, 0.081, -0.1403, 0, 0.081, 0, 0, 0.09, -0.0779, 0, 0.045, -0.1403, 0, -0.081, -0.0779, 0, -0.045, 0, 0, -0.162, 0, 0, -0.162, -0.0779, 0, -0.045, 0, 0, -0.09, 0, 0, -0.162, 0, 0, -0.09, 0.1403, 0, -0.081, 0.1403, 0, -0.081, 0, 0, -0.09, 0.0779, 0, -0.045, 0.1403, 0, 0.081, 0.0779, 0, 0.045, 0, 0, 0.162, 0, 0, 0.162, 0.0779, 0, 0.045, 0, 0, 0.09, 0.1403, 0, -0.081, 0.1403, 0, 0.081, 0, 0.24, 0, 0, 0, -0.162, 0.1403, 0, -0.081, 0, 0.24, 0, -0.1403, 0, -0.081, 0, 0, -0.162, 0, 0.24, 0, 0, 0.24, 0, 0, 0, 0.162, -0.1403, 0, 0.081, -0.1403, 0, 0.081, -0.1403, 0, -0.081, 0, 0.24, 0)
@@ -303,6 +305,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 6)
 current = true
 script = ExtResource("4_4tli0")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -156)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 6.12323e-17, -1, 0, 1, 6.12323e-17, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_8adfe")
+
 [node name="Sun" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 3, 0)
 mesh = ExtResource("5_it57t")
@@ -399,4 +408,6 @@ theme_override_constants/separation = 0
 
 [node name="World" type="Node3D" parent="."]
 
+[connection signal="input_event" from="Camera3D/StaticBody3D" to="Camera3D" method="_on_boundary"]
+[connection signal="input_event" from="MeshInstance3D/StaticBody3D" to="Camera3D" method="_on_boundary"]
 [connection signal="id_pressed" from="Control/VBoxContainer/PanelContainer/MenuBar/Help" to="Control/VBoxContainer/PanelContainer/MenuBar/Help" method="_on_id_pressed"]

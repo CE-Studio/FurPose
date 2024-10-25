@@ -837,9 +837,10 @@ data = PackedVector3Array(0, 0.005, 0.5, 0.049, 0.005, 0.4976, 0, 0.003, 0.5, 0.
 mesh = SubResource("CylinderMesh_rl2kn")
 surface_material_override/0 = ExtResource("1_urvtg")
 script = ExtResource("2_840i3")
-props = Array[StringName]([&"position", &"rotation", &"scale", &"makeDuplicate", &"snapToSurface", &"delete"])
+props = Array[StringName]([&"position", &"rotation", &"scale", &"color", &"makeDuplicate", &"snapToSurface", &"delete"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("1_urvtg")
+changeColor = true
 
 [node name="dragonbones" parent="." instance=ExtResource("4_hjqay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0184615, 0)
@@ -1244,7 +1245,7 @@ props = Array[StringName]([&"rotation"])
 highlightMat = ExtResource("3_usccx")
 defaultMat = ExtResource("5_8k2gy")
 
-[node name="Vert" parent="dragonbones/Armature_mesh/Armature_mesh_001/Armature_mesh_002/Armature_mesh_015/Armature_mesh_016/Sphere" index="0"]
+[node name="Vert" parent="dragonbones/Armature_mesh/Armature_mesh_001/Armature_mesh_002/Armature_mesh_015/Armature_mesh_016/Sphere" index="0" groups=["noRecolor"]]
 surface_material_override/0 = ExtResource("6_u6eyu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="dragonbones/Armature_mesh/Armature_mesh_001/Armature_mesh_002/Armature_mesh_015/Armature_mesh_016/Sphere" index="1"]

@@ -21,6 +21,11 @@ static func select(selected:Pickable) -> Gizmo:
 	return instance
 
 
+static func deselect():
+	if is_instance_valid(instance):
+		instance.queue_free()
+
+
 const MX:Mesh = preload("res://obj/gizmos/rotX.obj")
 const MY:Mesh = preload("res://obj/gizmos/rotY.obj")
 const MZ:Mesh = preload("res://obj/gizmos/rotZ.obj")

@@ -32,7 +32,7 @@ const supportedtypes = {
 	TYPE_VECTOR3I: null,
 	TYPE_VECTOR4: preload("res://editors/pf/eV4.tscn"),
 	TYPE_VECTOR4I: null,
-	TYPE_COLOR: null,
+	TYPE_COLOR: preload("res://editors/pf/eColor.tscn"),
 	TYPE_CALLABLE: preload("res://editors/pf/eCall.tscn"),
 }
 

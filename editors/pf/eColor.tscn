@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c40egfkb6527b"]
+
+[ext_resource type="Script" path="res://editors/pf/eColor.gd" id="1_scrf8"]
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 24.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+theme_type_variation = &"buttonBacking"
+script = ExtResource("1_scrf8")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+layout_mode = 2
+text = "Name"
+
+[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]

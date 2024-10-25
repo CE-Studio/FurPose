@@ -7,4 +7,6 @@ func _ready() -> void:
 
 
 func _on_check_box_pressed() -> void:
+	if not is_instance_valid(targ):
+		return
 	targ[prop].call()

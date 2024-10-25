@@ -21,6 +21,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if not is_instance_valid(targ):
+		return
 	if not (X.has_focus() or Y.has_focus() or Z.has_focus()):
 		ro = true
 		X.value = targ[prop].x
@@ -31,6 +33,8 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_line_edit_value_changed(value: float) -> void:
+	if not is_instance_valid(targ):
+		return
 	if ro:
 		return
 	var vec := Vector4(X.value, Y.value, Z.value, W.value)

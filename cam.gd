@@ -129,3 +129,8 @@ func _update_mouselook():
 			_total_pitch += pitch
 			rotate_y(deg_to_rad(-yaw))
 			rotate_object_local(Vector3(1,0,0), deg_to_rad(-pitch))
+
+
+func _on_boundary(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event.is_action_pressed("lclick"):
+		Gizmo.deselect()

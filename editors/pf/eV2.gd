@@ -17,6 +17,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if not is_instance_valid(targ):
+		return
 	if not (X.has_focus() or Y.has_focus()):
 		ro = true
 		X.value = targ[prop].x

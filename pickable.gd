@@ -6,6 +6,20 @@ class_name Pickable
 @export var highlightMat:Material
 @export var defaultMat:Material
 @export var spawnGizmo := true
+@export var changeColor := false
+@export var color := Color("#6d6d6d"):
+	set(value):
+		color = value
+		vmat.albedo_color = value
+		if color.a < 1:
+			vmat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		else:
+			vmat.transparency = BaseMaterial3D.TRANSPARENCY_DISABLED
+@export var colorBackface := false
+@export var colorIncludeSelf := false
+
+
+var vmat := StandardMaterial3D.new()
 
 
 var xRotation:
@@ -29,6 +43,15 @@ var zRotation:
 
 
 func _ready() -> void:
+	vmat.albedo_color = color
+	if colorBackface:
+		vmat.cull_mode = BaseMaterial3D.CULL_DISABLED
+	if changeColor:
+		if colorIncludeSelf:
+			setmat(self, vmat)
+		else:
+			for i in get_children():
+				setmat(i, vmat)
 	for i in get_children():
 		if i is StaticBody3D:
 			i.input_event.connect(_on_input_event)
@@ -49,6 +72,16 @@ func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, n
 
 func delete() -> void:
 	queue_free()
+
+
+func setmat(obj:Node, mat:Material) -> void:
+	for i in obj.get_children():
+		setmat(i, mat)
+	if not obj.is_in_group(&"noRecolor"):
+		if obj is Pickable:
+			obj.defaultMat = mat
+		if obj is MeshInstance3D:
+			obj["surface_material_override/0"] = mat
 
 
 func makeDuplicate() -> void:
