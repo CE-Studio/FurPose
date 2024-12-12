@@ -58,7 +58,7 @@ func _ready() -> void:
 	hz.input_event.connect(inputz)
 	if is_instance_valid(targ):
 		mode = targ.rotation_order
-		if not(&"rotation" in targ.props):
+		if not((&"rotation" in targ.props) or (&"rotation_degrees" in targ.props)):
 			hasx = false
 			hasy = false
 			hasz = false

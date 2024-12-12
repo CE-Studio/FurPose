@@ -76,7 +76,8 @@ func delete() -> void:
 
 func setmat(obj:Node, mat:Material) -> void:
 	for i in obj.get_children():
-		setmat(i, mat)
+		if not i.is_in_group(&"noRecursive"):
+			setmat(i, mat)
 	if not obj.is_in_group(&"noRecolor"):
 		if obj is Pickable:
 			obj.defaultMat = mat
